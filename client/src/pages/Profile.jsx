@@ -19,6 +19,7 @@ import {
   signOutUserSuccess,
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import { Link} from "react-router-dom";
 
 export default function Profile() {
   const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -50,6 +51,7 @@ export default function Profile() {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setFilePerc(Math.round(progress));
       },
+      
       (error) => {
         setFileUploadError(true);
       },
@@ -118,6 +120,7 @@ export default function Profile() {
       }
       dispatch(signOutUserSuccess(data));
     } catch (error) {
+      // eslint-disable-next-line no-undef
       dispatch(signOutUserFailure(data.message));
     }
   };
@@ -182,6 +185,9 @@ export default function Profile() {
         >
           {loading ? "Loading..." : "Update"}
         </button>
+        <Link className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-90" to={"/create-listing"}>
+        Create Listing</Link>
+
       </form>
       <div className="flex justify-between mt-5 font-semibold">
         <span
