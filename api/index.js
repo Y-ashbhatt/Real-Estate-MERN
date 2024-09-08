@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dontenv from "dotenv";
 import userRouter from "../api/routes/user.route.js";
 import authRouter from "../api/routes/auth.route.js";
+import listingRouter from "../api/routes/listing.route.js";
 import cookieParser from "cookie-parser";
 
 dontenv.config();
@@ -28,6 +29,7 @@ app.listen(3000, () => {
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/listing", listingRouter);
 
 
 // middleware to handle possible errors in sign up
