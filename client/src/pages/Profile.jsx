@@ -281,13 +281,14 @@ export default function Profile() {
                 >
                   Delete
                 </button>
-                <Link to={`/update-listing/${listing._id}`}><button  className="text-green-700 uppercase">Edit</button></Link>
-                
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button className="text-green-700 uppercase">Edit</button>
+                </Link>
               </div>
             </div>
           ))}
         </div>
       )}
     </div>
-  );
+  ); 
 }

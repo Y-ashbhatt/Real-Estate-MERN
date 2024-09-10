@@ -10,7 +10,7 @@ import {
 } from "firebase/storage";
 
 export default function UpdateListing() {
-  const {currentUser} = useSelector(state => state.user);
+  const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
@@ -33,22 +33,20 @@ export default function UpdateListing() {
 
   const params = useParams();
 
-useEffect(()=>{
+  useEffect(() => {
     const fetchListing = async () => {
-        const listingId = params.listingId;
-        const res = await fetch(`/api/listing/get/${listingId}`);
-        const data = await res.json();
-        if(data.success === false){
-            console.log(data.message)
-            return
-        }
-        setFormdata(data);
-    }
+      const listingId = params.listingId;
+      const res = await fetch(`/api/listing/get/${listingId}`);
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
+      }
+      setFormdata(data);
+    };
 
     fetchListing();
-}, [])
-
-
+  }, []);
 
   // save files
   const handleImageSubmit = (e) => {
@@ -170,9 +168,9 @@ useEffect(()=>{
       const data = await res.json();
       setLoading(false);
       if (data.success === false) {
-        setError(data.message);
+        setError(data.message); 
       }
-      navigate(`/listing/${data._id}`)
+      navigate(`/listing/${data._id}`);
     } catch (error) {
       setError(error.message);
       setLoading(false);
