@@ -40,7 +40,7 @@ export default function Header() {
         <form onSubmit={handleSubmit} className="bg-slate-100 p-3 rounded-lg flex items-center">
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Search..."
             className="bg-transparent focus:outline-none w-24 sm:w-64"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -51,7 +51,7 @@ export default function Header() {
           </button>
         </form>
 
-        <ul className="flex gap-4">
+        <ul className="flex font-semibold gap-4">
           <Link to="/">
             <li className="hidden sm:inline text-slate-700 hover:underline">
               Home
@@ -59,7 +59,7 @@ export default function Header() {
           </Link>
           <Link to="/about">
             <li className="hidden sm:inline text-slate-700 hover:underline">
-              About{" "}
+              About
             </li>
           </Link>
 

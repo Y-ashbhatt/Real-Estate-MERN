@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ListingItem from "../components/ListingItem";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -117,13 +118,27 @@ export default function Search() {
     navigate(`/search?${searchQuery}`);
   };
 
+  const onShowMoreClick = async () => {
+    const numberOfListings = listings.length;
+    const startIndex = numberOfListings;
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set('startIndex', startIndex);
+    const searchQuery = urlParams.toString();
+    const res = await fetch(`/api/listing/get?${searchQuery}`);
+    const data = await res.json();
+    if (data.length < 9) {
+      setShowMore(false);
+    }
+    setListings([...listings, ...data]);
+  };
+
   return (
     <div className="flex flex-col md:flex-row ">
-      <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen ">
+      <div className="py-7 px-4  border-b-2 md:border-r-2 md:min-h-screen ">
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
           <div className="flex items-center gap-2 ">
             <label className="whitespace-nowrap font-semibold ">
-              Search Term:
+              Search:
             </label>
             <input
               type="text"
@@ -134,8 +149,9 @@ export default function Search() {
               onChange={handleChange}
             />
           </div>
-          <div className="flex gap-2 flex-wrap items-center">
+          <div className="flex flex-col gap-2 ">
             <label className="font-semibold">Type:</label>
+            
             <div className="flex gap-2">
               <input
                 type="checkbox"
@@ -177,7 +193,7 @@ export default function Search() {
               <span>Offer</span>
             </div>
           </div>
-          <div className="flex gap-2 flex-wrap items-center">
+          <div className="flex gap-2 flex-col">
             <label className="font-semibold">Amenities:</label>
             <div className="flex gap-2">
               <input
@@ -214,15 +230,41 @@ export default function Search() {
               <option value="createdAt_asc">Oldest</option>
             </select>
           </div>
-          <button className="bg-slate-700 text-white p-3 rounde uppercase hover:opacity-90">
+          <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-80">
             Search
           </button>
         </form>
       </div>
-      <div className="">
+      <div className="flex-2">
         <h1 className="text-3xl font-semibold border-b p-3 text-slate-700 mt-5">
           Listing Results:
         </h1>
+        <div className='p-7 flex flex-wrap gap-4'>
+          {!loading && listings.length === 0 && (
+            <p className='text-xl text-slate-700'>No listing found!</p>
+          )}
+          {loading && (
+            <p className='text-xl text-slate-700 text-center w-full'>
+              Loading...
+            </p>
+          )}    
+
+          {!loading &&
+            listings &&
+            listings.map((listing) => (
+              <ListingItem key={listing._id} listing={listing} />
+            ))}
+
+          {showMore && (
+            <button
+              onClick={onShowMoreClick}
+              className='text-green-700 hover:underline p-7 text-center w-full'
+            >
+              Show more
+            </button>
+          )}
+        </div>
+
       </div>
     </div>
   );
