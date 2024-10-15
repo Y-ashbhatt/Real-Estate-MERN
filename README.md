@@ -1,5 +1,5 @@
 # 🏠 Real Estate Marketplace
-A full-stack real estate marketplace built with the MERN (MongoDB, Express, React, Node.js) stack. The project features JWT authentication, Google OAuth (via Firebase), Firebase integration, image uploads, advanced search, and CRUD operations for property listings.
+A full-stack real estate marketplace built with the MERN (MongoDB, Express, React, Node.js) stack and Tailwind CSS. The project features JWT authentication, Google OAuth (via Firebase), Firebase integration, image uploads, advanced search, and CRUD operations for property listings.
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
