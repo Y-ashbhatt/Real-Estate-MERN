@@ -1,5 +1,5 @@
 # 🏠 Real Estate Marketplace
-A full-stack real estate marketplace built with the MERN (MongoDB, Express, React, Node.js) stack and Tailwind CSS. The project features JWT authentication, Google OAuth (via Firebase), Firebase integration, image uploads, advanced search, and CRUD operations for property listings.
+A full-stack real estate marketplace built with the MERN (MongoDB, Express, React, Node.js) stack and Tailwind CSS. The project features JWT authentication, Google OAuth, Firebase integration, image uploads, advanced search, and CRUD operations for property listings.
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
@@ -63,33 +63,44 @@ Clone the repository:
 ```bash
 git clone https://github.com/your-username/real-estate-marketplace.git
 ```
+
 Navigate to the project directory:
+
 ```bash
 cd real-estate-marketplace
 ```
+
 Install dependencies for the backend:
+
 ```bash
 npm install
 ```
+
 Navigate to the client folder and install frontend dependencies:
+
 ```bash
 cd client
 ```
+
 ```bash
 npm install
 ```
+
 Start the development server:
+
 ```bash
 npm run dev
 ```
 
 ## Future Enhancements
+
 - Real-time Chat: Enable direct communication between buyers and landlords.
 - Payment Integration: Allow users to make and receive payments for property bookings.
 - Favorites Feature: Add functionality for users to save their favorite properties for later reference.
 
 
 ## Author
+
 - Name: Yash Bhatt
 - GitHub: [@Y-ashbhatt](https://github.com/Y-ashbhatt)
 - LinkedIn: [Yash Bhatt](https://www.linkedin.com/in/yashbhatt30/) 
